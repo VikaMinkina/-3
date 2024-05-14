@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблицы Базы Данных</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        nav {
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+        }
+
+            nav a {
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                nav a:hover {
+                    background-color: #ddd;
+                }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Добавление в таблицы БД</a>
+        <a href="/functions">Дополнительные функции</a>
+        <a href="/tables">Таблицы</a>
+    </nav>
+
+    <h1>Таблица "Сотрудники"</h1>
+    <div id="staff-table-container"></div>
+
+    <script>
+        fetch('/get-staff-data')
+            .then(response => response.text())
+            .then(tableHTML => {
+                const tableContainer = document.getElementById('staff-table-container');
+                tableContainer.innerHTML = tableHTML;
+            })
+            .catch(error => console.error(error));
+    </script>
+
+    <h1>Таблица "Документы"</h1>
+    <div id="documents-table-container"></div>
+
+    <script>
+        fetch('/get-documents-data')
+            .then(response => response.text())
+            .then(tableHTML => {
+                const tableContainer = document.getElementById('documents-table-container');
+                tableContainer.innerHTML = tableHTML;
+            })
+            .catch(error => console.error(error));
+    </script>
+
+    <h1>Таблица "Статьи увольнения"</h1>
+    <div id="articles-table-container"></div>
+
+    <script>
+        fetch('/get-article-data')
+            .then(response => response.text())
+            .then(tableHTML => {
+                const tableContainer = document.getElementById('articles-table-container');
+                tableContainer.innerHTML = tableHTML;
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>

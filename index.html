@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавление в таблицы БД</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+        }
+
+            nav a {
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                nav a:hover {
+                    background-color: #ddd;
+                }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Добавление в таблицы БД</a>
+        <a href="/functions">Дополнительные функции</a>
+        <a href="/tables">Таблицы</a>
+    </nav>
+    <h1>Добавить сотрудника</h1>
+    <form action="/staff" method="POST">
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="middleName">Отчество:</label>
+        <input type="text" id="middleName" name="middleName" required>
+        <label for="position">Должность:</label>
+        <input type="text" id="position" name="position" required>
+        <label for="department">Подразделение:</label>
+        <input type="text" id="department" name="department" required>
+        <label for="hireDate">Дата приема на работу:</label>
+        <input type="date" id="hireDate" name="hireDate" required>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h1>Добавить статью увольнения</h1>
+    <form action="/articles_of_dismissal" method="POST">
+        <label for="title">Название статьи увольнения:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="reason">Причина увольнения</label>
+        <input type="text" id="reason" name="reason" required>
+        <label for="licensePlateNumber">Номер статьи увольнения:</label>
+        <input type="text" id="licensePlateNumber" name="licensePlateNumber" required>
+        <label for="accessPointNumber">Номер пункта увольнения:</label>
+        <input type="text" id="accessPointNumber" name="accessPointNumber" required>
+        <label for="accessSubpointNumber">Номер подпункта увольнения:</label>
+        <input type="text" id="accessSubpointNumber" name="accessSubpointNumber" required>
+        <button type="submit">Добавить</button>
+    </form>
+
+    <h1>Добавить документ</h1>
+    <form action="/document" method="POST">
+        <label for="codeArticleOfDismissal">Код статьи увольнения:</label>
+        <input type="text" id="codeArticleOfDismissal" name="codeArticleOfDismissal" required>
+        <label for="employeesCode">Код сотрудника:</label>
+        <input type="text" id="employeesCode" name="employeesCode" required>
+        <label for="documentNumber">Номер документа:</label>
+        <input type="text" id="documentNumber" name="documentNumber" required>
+        <label for="registrationDate">Дата регистрации:</label>
+        <input type="date" id="registrationDate" name="registrationDate" required>
+        <label for="dateOfDismissal">Дата увольнения:</label>
+        <input type="date" id="dateOfDismissal" name="dateOfDismissal" required>
+        <label for="moneyCompensation">Денежная компенсация:</label>
+        <input type="number" id="moneyCompensation" name="moneyCompensation" required>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дополнительные функции</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 20px;
+        }
+
+        nav {
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+        }
+
+            nav a {
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                nav a:hover {
+                    background-color: #ddd;
+                }
+
+        .functions-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .function-section {
+            width: 48%;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #result, #employee-count-result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        #compensation-result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Добавление в таблицы БД</a>
+        <a href="/functions">Дополнительные функции</a>
+        <a href="/tables">Таблицы</a>
+    </nav>
+
+    <div class="functions-container">
+        <div class="function-section" id="compensation-section">
+            <h2>Подсчет суммы компенсаций</h2>
+            <p>Нажмите кнопку, чтобы подсчитать сумму компенсаций из таблицы documents базы данных employees_dismissal.</p>
+            <button onclick="fetchCompensationSum()">Подсчет</button>
+            <div id="result"></div>
+        </div>
+
+        <div class="function-section" id="employee-count-section">
+            <h2>Количество сотрудников</h2>
+            <p>Нажмите кнопку, чтобы узнать количество сотрудников.</p>
+            <button onclick="fetchEmployeeCount()">Проверить</button>
+            <div id="employee-count-result"></div>
+        </div>
+    </div>
+
+    <script>
+        function fetchCompensationSum() {
+            fetch('/calculate-compensation-sum')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').textContent = data;
+                })
+                .catch(error => console.error('Ошибка:', error));
+        }
+
+        function fetchEmployeeCount() {
+            fetch('/count-employees')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('employee-count-result').textContent = data;
+                })
+                .catch(error => console.error('Ошибка:', error));
+        }
+    </script>
+
+    <h2>Подсчет суммы компенсаций</h2>
+    <p>Нажмите кнопку, чтобы подсчитать среднюю сумму компенсаций из таблицы документов базы данных employees_dismissal и умножить ее на 123.34.</p>
+    <button onclick="fetchCompensationSum1()">Подсчитать</button>
+
+    <div id="compensation-result"></div>
+
+    <script>
+        function fetchCompensationSum1() {
+            fetch('/average-compensation')
+                .then(response => response.json())
+                .then(data => {
+                    const averageCompensation = data.average;
+                    const result = averageCompensation * 123.34;
+                    document.getElementById('compensation-result').textContent = `Средняя сумма компенсаций, умноженная на 123.34: ${result.toFixed(2)}`;
+                })
+                .catch(error => console.error('Ошибка:', error));
+        }
+    </script>
+
+</body >
+</html >
